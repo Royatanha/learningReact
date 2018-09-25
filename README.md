@@ -1,4 +1,10 @@
+Hey everyone, I'm learning React with Redux with :
 # ReduxSimpleStarter
+This Repo contains ReactStarter plus my own Notes after learning each section. 
+
+Cheers to @StephenGrider ! 
+
+############################################################################
 
 Interested in learning [Redux](https://www.udemy.com/react-redux/)?
 
