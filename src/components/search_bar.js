@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
+//import * as React from 'react';
 
 class SearchBar extends Component {
 constructor(props){ //uses to initiallize the component
   super(props); //calling the parent
   this.state = {
-    term : '' //record the change on this State
+    term : 'yuhu' //record the change on this State
   }
 }
 
@@ -14,13 +16,9 @@ render(){
   //return <input onChange={(event) => console.log(event.target.value)}/>//one input then --> event => blah blah
   return (
       <div>
-        <input
-          value={this.state.term}
-          onChange={event =>this.setState({term: event.target.value})} />
+      {this.state.term}
       </div>
   );
 }
-//define an Eventhandler
-//onInputChange(event){}
 }
 export default SearchBar;
