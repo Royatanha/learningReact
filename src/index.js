@@ -18,7 +18,7 @@ class App extends Component{
     super(props);
     this.state= {videos: [] //list of videos - object array}
   }
-  YTSearch({key: API_KEY, term:'surfboard'}, (videos) => {
+  YTSearch({key: API_KEY, term:'Zepplin platform'}, (videos) => {
     //console.log(data); //configuration  option and callback function
     //this.setState({videos: data})
     this.setState({videos});
@@ -28,7 +28,7 @@ class App extends Component{
     return(
       <div>
       <SearchBar />
-    <VideoList />
+    <VideoList videos={this.state.videos}/>
       </div>
     );
   }
