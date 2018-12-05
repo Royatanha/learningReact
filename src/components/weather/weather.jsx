@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import SeasonDisplay from './season_display';
+import Spinner from '../common/spinner';
 
 class Weather extends Component {
   /*
@@ -31,18 +32,20 @@ state = {lat: null, errorMessage: ''}
       err => {this.setState({errorMessage: 'User denied Geolocation '})}
     );
   }
-
+renderContent() {
+  const {lat,errorMessage} = this.state;
+  if(errorMessage && !lat) {
+    return( <div> Error: {errorMessage}</div>);
+  }
+  if(!errorMessage && lat) {
+    return(
+      <SeasonDisplay latitude= {lat} />
+    );
+  }
+return <Spinner message="Please accept location Request" />;
+}
   render() {
-    const {lat,errorMessage} = this.state;
-    if(errorMessage && !lat) {
-      return( <div> Error: {errorMessage}</div>);
-    }
-    if(!errorMessage && lat) {
-      return(
-        <SeasonDisplay latitude= {lat} />
-      );
-    }
-return <div>Loading!</div>
+    return <div>{this.renderContent()}</div>
   }
 };
 export default Weather;
