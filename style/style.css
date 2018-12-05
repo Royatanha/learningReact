@@ -1,6 +1,6 @@
 .video-list {
   background-color: lightgreen;
-}
+
 .search-bar {
   text-align: center;
   margin: 10px;
@@ -26,4 +26,5 @@
 
 .list-group-item:hover {
   background-color: #eee;
+}
 }
