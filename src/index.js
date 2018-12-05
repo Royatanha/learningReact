@@ -1,47 +1,33 @@
 import _ from 'lodash';
 import ReactDOM from 'react-dom';
 import React, {Component} from 'react';
-import SearchBar from './components/search_bar';
-import VideoList from './components/video_list';
-import VideoDetail from './components/video_detail';
+import VideoApi from './components/video_api/videoApi';
+
 //react is a library --> the rest need file reference
 import YTSearch from 'youtube-api-search';
 const API_KEY='AIzaSyD6qwYV0SWWoeE_rw30JCRQHtIfH0BM4h8';
 
-//create a new component
-/* Old js syntax
-const App = function(){
-  return <div>Hi!</div>;
-}
-*/
-//new ES6 syntax
+
 class App extends Component{
   constructor(props) {
     super(props);
     this.state= {
-      videos:[],
-      selectedVideo:null
+showVideoApi: false
   }
-this.videoSearch('surfboard');
-};
+this.handleVideoApi = this.handleVideoApi.bind(this);
 
-  videoSearch(term) {
-    YTSearch({key: API_KEY, term: term}, (videos) => {
-      this.setState({
-        videos:videos,
-        selectedVideo: videos[0]
-      });
-    });
-}
+};
   render() {
-    const videoSearch = _.debounce((term) => {this.videoSearch(term)},300);
+    const videoApiContainer = <VideoApi />;
     return(
       <div>
-      <SearchBar onSearchTermChange={videoSearch}/>
-    <VideoDetail video={this.state.selectedVideo}/>
-    <VideoList videos={this.state.videos}   onVideoSelect={selectedVideo => this.setState({selectedVideo})} />
+        <button onClick={this.handleVideoApi}>Search a Video </button>
+        <div>{this.state.showVideoApi && videoApiContainer}</div>
       </div>
     );
+  }
+ handleVideoApi() {
+    this.setState({showVideoApi: !this.state.showVideoApi});
   }
 }
 
